@@ -1,12 +1,13 @@
 {
   "name": "ephemeral-id-sender",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.0.1",
+  "description": "Ember-cli addon that reads and writes ephemeral ID to each request using ember-data's ds-improved-ajax feature flag.",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "ephemeral-id"
   ],
   "license": "MIT",
-  "author": "",
+  "author": "Pavol Dano",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -33,6 +34,7 @@
     "ember-cli-shims": "^1.2.0",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^2.0.0",
+    "ember-cookies": "^0.1.3",
     "ember-disable-prototype-extensions": "^1.1.2",
     "ember-export-application-global": "^2.0.0",
     "ember-load-initializers": "^1.0.0",
