@@ -1,6 +1,6 @@
 {
   "name": "ephemeral-id-sender",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Ember-cli addon that reads and writes ephemeral ID to each request using ember-data's ds-improved-ajax feature flag.",
   "keywords": [
     "ember-addon",
