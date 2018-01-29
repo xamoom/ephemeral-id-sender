@@ -71,6 +71,29 @@ test('should use ephemeralIDFromCookies() to retrieve the ephemeral ID cookie va
     'ephemeralIDFromCookies() delegates to read() method of the cookies service passing its return value further');
 });
 
+test('should use updateEphemeralIDInCookies() to update the ephemeral ID cookie value', function(assert) {
+  assert.expect(4);
+
+  const newEphemeralIdMock = 'newEphemeralIdMock';
+
+  const EphemeralIdSenderObject = EmberObject.extend(EphemeralIdSenderMixin);
+  const subject = EphemeralIdSenderObject.create({
+    cookies: {
+      read() {
+        return null;
+      },
+      write(key, value, options) {
+        assert.ok(true, 'write() was called');
+        assert.equal(key, EPHEMERAL_ID_COOKIE_KEY, 'key the ephemeral ID is stored in the cookies passed to the write() function is ok');
+        assert.equal(value, newEphemeralIdMock, 'value the ephemeral ID is updated with passed to the write() function is ok');
+        assert.deepEqual(options, { path: '/'}, 'options the ephemeral ID is updated with passed to the write() function is ok');
+      },
+    },
+  });
+
+  subject.updateEphemeralIDInCookies(newEphemeralIdMock);
+});
+
 test('should override headersForRequest() to retrieve the enriched headers instead of the default headers', function(assert) {
   assert.expect(1);
 
@@ -89,7 +112,6 @@ test('should override headersForRequest() to retrieve the enriched headers inste
     get(subject, 'headersWithEphemeralId'),
     'headersForRequest() returns the (value of) CP headersWithEphemeralId');
 });
-
 
 test('should do nothing if x-ephemeral-id is absent in the received headers', function(assert) {
   assert.expect(1);

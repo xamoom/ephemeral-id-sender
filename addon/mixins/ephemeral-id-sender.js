@@ -68,7 +68,9 @@ export default Mixin.create({
    * @tested
    */
   updateEphemeralIDInCookies(newEphemeralId) {
-    get(this, 'cookies').write(EPHEMERAL_ID_COOKIE_KEY, newEphemeralId);
+    get(this, 'cookies').write(EPHEMERAL_ID_COOKIE_KEY, newEphemeralId, {
+      path: '/' // explicitly set path to the root to assure unique cookies lookup on refressh
+    });
   },
 
   /**
